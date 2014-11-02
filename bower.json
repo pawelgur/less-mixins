@@ -7,6 +7,14 @@
     "less",
     "mixins"
   ],
+  "ignore" :[
+    "README.md",
+    ".gitignore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawelgur/less-mixins.git"
+  },
   "authors": [
     "Pavel Gurecki <pawelgur@gmail.com>"
   ],
