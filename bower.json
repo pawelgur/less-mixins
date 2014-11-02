@@ -8,7 +8,6 @@
     "mixins"
   ],
   "ignore" :[
-    "README.md",
     ".gitignore"
   ],
   "repository": {
