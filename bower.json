@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pawelgur/less-mixins.git"
+    "url": "git://github.com/pawelgur/less-mixins.git"
   },
   "authors": [
     "Pavel Gurecki <pawelgur@gmail.com>"
