@@ -1,0 +1,14 @@
+{
+  "name": "pg-less-mixins",
+  "version": "1.0.0",
+  "description": "Various usefull less mixins",
+  "main": "_mixins.less",
+  "keywords": [
+    "less",
+    "mixins"
+  ],
+  "authors": [
+    "Pavel Gurecki <pawelgur@gmail.com>"
+  ],
+  "license": "MIT"
+}
