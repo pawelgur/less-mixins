@@ -1,0 +1,23 @@
+
+
+.cube(@dimensions: 100%){
+	width: @dimensions;
+	height: @dimensions;
+}
+
+
+
+.full-block()
+{
+	//used primary for inside - block links
+	width: 100%;
+	height: 100%;
+	display: block;
+	.sizing-border-box();
+}
+
+
+
+.sprite-bg-post(@stepX, @stepY, @index, @initialX, @initialY){
+	background-position: (-@initialX - (@stepX * @index)) (-@initialY - (@stepY * @index));
+}

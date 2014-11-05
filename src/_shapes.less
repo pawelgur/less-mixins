@@ -1,0 +1,207 @@
+
+
+//////////////// css shapes ///////////////////
+.triangle-bottom-right(@color, @dimensions){
+	width: 0;
+	height: 0;
+	border-bottom: @dimensions solid @color;
+	border-left: @dimensions solid transparent;
+}
+
+.triangle-bottom-left(@color,@dimensions){
+	width: 0;
+	height: 0;
+	border-bottom: @dimensions solid @color;
+	border-right: @dimensions solid transparent;
+}
+
+.triangle-up(@color, @width){
+	width: 0;
+	height: 0;
+	border-left: @width solid transparent;
+	border-right: @width solid transparent;
+	border-bottom: @width solid @color;
+}
+
+	//tall triangle
+	.triangle-up(@color, @width, true){
+		width: 0;
+		height: 0;
+		border-left: (@width / 2) solid transparent;
+		border-right: (@width / 2) solid transparent;
+		border-bottom: @width solid @color;
+	}
+
+.triangle-down(@color, @width){
+	width: 0;
+	height: 0;
+	border-left:  @width solid transparent;
+	border-right:  @width solid transparent;
+	border-top:  @width solid @color;
+}
+	
+.triangle-right(@color, @width) {
+	width: 0;
+	height: 0;
+	border-top:  @width solid transparent;
+	border-left:  @width solid @color;
+	border-bottom:  @width solid transparent;
+}	
+	
+.triangle-top-right(@color, @dimensions){
+	width: 0;
+	height: 0;
+	border-top: @dimensions  solid @color;
+	border-left: @dimensions solid transparent;
+
+}	
+
+.triangle-top-left(@color, @dimensions){
+	width: 0;
+	height: 0;
+	border-top: @dimensions solid @color;
+	border-right: @dimensions solid transparent;
+}	
+
+
+.burst-12(@color, @dimensions) {
+    background: @color;
+    position: relative;
+    text-align: center;
+	z-index: 1;
+	
+	.cube(@dimensions);
+		
+	&:before, &:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: @color;
+		.cube(@dimensions);
+		z-index: -1;
+	}
+	&:before {
+		.rotate(30deg);
+	}
+	&:after {
+		.rotate(60deg);
+	}
+
+}
+
+.long-text-shadow-50(@color){
+	text-shadow: @color 1px 1px,
+    @color 2px 2px,
+    @color 3px 3px,
+    @color 4px 4px,
+    @color 5px 5px,
+    @color 6px 6px,
+    @color 7px 7px,
+    @color 8px 8px,
+    @color 9px 9px,
+    @color 10px 10px,
+    @color 11px 11px,
+    @color 12px 12px,
+    @color 13px 13px,
+    @color 14px 14px,
+    @color 15px 15px,
+    @color 16px 16px,
+    @color 17px 17px,
+    @color 18px 18px,
+    @color 19px 19px,
+    @color 20px 20px,
+    @color 21px 21px,
+    @color 22px 22px,
+    @color 23px 23px,
+    @color 24px 24px,
+    @color 25px 25px,
+    @color 26px 26px,
+    @color 27px 27px,
+    @color 28px 28px,
+    @color 29px 29px,
+    @color 30px 30px,
+    @color 31px 31px,
+    @color 32px 32px,
+    @color 33px 33px,
+    @color 34px 34px,
+    @color 35px 35px,
+    @color 36px 36px,
+    @color 37px 37px,
+    @color 38px 38px,
+    @color 39px 39px,
+    @color 40px 40px,
+    @color 41px 41px,
+    @color 42px 42px,
+    @color 43px 43px,
+    @color 44px 44px,
+    @color 45px 45px,
+    @color 46px 46px,
+    @color 47px 47px,
+    @color 48px 48px,
+    @color 49px 49px,
+    @color 50px 50px;
+}
+.long-text-shadow-60(@color){
+	text-shadow:@color 1px 1px,
+   @color 2px 2px,
+   @color 3px 3px,
+   @color 4px 4px,
+   @color 5px 5px,
+   @color 6px 6px,
+   @color 7px 7px,
+   @color 8px 8px,
+   @color 9px 9px,
+   @color 10px 10px,
+   @color 11px 11px,
+   @color 12px 12px,
+   @color 13px 13px,
+   @color 14px 14px,
+   @color 15px 15px,
+   @color 16px 16px,
+   @color 17px 17px,
+   @color 18px 18px,
+   @color 19px 19px,
+   @color 20px 20px,
+   @color 21px 21px,
+   @color 22px 22px,
+   @color 23px 23px,
+   @color 24px 24px,
+   @color 25px 25px,
+   @color 26px 26px,
+   @color 27px 27px,
+   @color 28px 28px,
+   @color 29px 29px,
+   @color 30px 30px,
+   @color 31px 31px,
+   @color 32px 32px,
+   @color 33px 33px,
+   @color 34px 34px,
+   @color 35px 35px,
+   @color 36px 36px,
+   @color 37px 37px,
+   @color 38px 38px,
+   @color 39px 39px,
+   @color 40px 40px,
+   @color 41px 41px,
+   @color 42px 42px,
+   @color 43px 43px,
+   @color 44px 44px,
+   @color 45px 45px,
+   @color 46px 46px,
+   @color 47px 47px,
+   @color 48px 48px,
+   @color 49px 49px,
+   @color 50px 50px,
+   @color 51px 51px,
+   @color 52px 52px,
+   @color 53px 53px,
+   @color 54px 54px,
+   @color 55px 55px,
+   @color 56px 56px,
+   @color 57px 57px,
+   @color 58px 58px,
+   @color 59px 59px,
+   @color 60px 60px;
+}
+

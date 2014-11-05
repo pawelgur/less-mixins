@@ -1,0 +1,125 @@
+
+.bullet-disc(@indent: 10px, @yOffset: 0px){
+	list-style-image:url('/img/bullet-round-lightblue.png');
+	list-style-type: disc;
+	
+	&:hover, &:active{
+		list-style-image:url('/img/bullet-round-blue.png');
+	
+	}
+}
+
+.bullet-arrow(@indent: 10px){
+	text-indent: @indent;    
+	background: url("/img/bullets.png") no-repeat 0 -20px;
+	
+	&:hover, &:active{
+		background-position: 0 5px;
+	}
+}  
+ 
+
+ .fullBlock() {	.full-block;	} //left for backwards-compatibility
+
+
+.zipper-bottom(@color: "white"){
+	&:after{
+		content: " ";
+		width: 100%;
+		height: 5px;
+		display: block;
+		position: absolute;
+		bottom: 0;
+		background: url("/img/zipper-@{color}-up.png") repeat-x 0 0;  
+		z-index: 2;
+	}
+}
+.zipper-top(@color: "white"){
+	&:before{
+		content: " ";
+		width: 100%;
+		height: 5px;
+		display: block;
+		position: absolute;
+		top: 0;
+		background: url("/img/zipper-@{color}-down.png") repeat-x 0 0;  
+		z-index: 2;
+	}
+}
+ 
+
+
+
+//////////////// HOVER OPAQUE ///////////////////////
+
+.hover-opaque-animation-def(@speed: 300ms, @opacity: 0.6 )
+{
+	.hover-opaque-animation(@speed, 1);
+	&:hover, &:active{
+		.hover-opaque-animation-hover(@opacity);
+	}  
+}
+.hover-opaque-animation(@speed, @opacity){
+	.opacity(@opacity);
+	
+	transition: opacity @speed ;
+	-moz-transition: opacity @speed ; 
+	-webkit-transition: opacity @speed; 
+	-o-transition: opacity @speed ;
+	
+}
+	//ie fallback
+	.hover-opaque-animation(@speed, @opacity) when (@opacity = 0){
+		
+		.ie.oldie &{
+			display: none;
+		}
+		
+	}
+
+.hover-opaque-animation-hover(@opacity)
+{
+	.opacity(@opacity);	
+}
+	//ie fallback
+	.hover-opaque-animation-hover(@opacity) when (@opacity > 0)
+	{
+		.ie.oldie &{
+			display: block;
+		}
+	}
+
+
+
+
+
+.background-color-transition(@speed, @effect){
+	-webkit-transition: background-color @speed @effect;
+    -moz-transition: background-color @speed @effect;
+    -o-transition: background-color @speed @effect;
+    -ms-transition: background-color @speed @effect;
+    transition: background-color @speed @effect;
+}
+
+
+.bg-col-trans(){
+	.transition-general(background-color 300ms);
+}
+
+
+ 
+.background-clip(padding-box){
+	-moz-background-clip: padding;     /* Firefox 3.6 */
+	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */				
+}
+
+
+.transparent-text(){
+	color: #000; /* Fallback for older browsers */
+	color: rgba(0, 0, 0, 0.0);
+	
+	.ie.oldie &{
+		text-indent: -9999px;
+	}
+}

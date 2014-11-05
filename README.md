@@ -3,4 +3,4 @@ less-mixins
 
 Various usefull less mixins.
 
-Include (reference) in your .less files.
+USAGE: include (as reference) "_mixins.less" in your .less files.

@@ -1,0 +1,70 @@
+
+//////////////////// LAYOUTS ////////////////////////////
+
+
+.clearfix(){
+ // For modern browsers
+	&:before,
+	&:after {
+		content:" ";
+		display:table;
+	}
+
+	&:after {
+		clear:both;
+		content: " ";
+		visibility: hidden;
+		line-height: 0;
+		height: 0;
+	}
+
+  // For IE 6/7 (trigger hasLayout)
+  & {
+	*zoom:1;
+  }
+}
+
+
+
+//loop for generating equal widths (for ".count-[count]" classes)
+.generateEqualWidths(@count, @className: list-el) when (@count > 0){
+	.count-@{count}{
+		.@{className}{ 
+			width: (100%/@count);
+		}
+	}
+	
+	.generateEqualWidths((@count - 1), @className);
+}
+
+	.generateEqualWidthsGut(@count, @gutter, @className: list-el) when (@count > 0){
+		@gutterSum:  (@gutter * (@count - 1));
+		
+		.count-@{count}{
+			.@{className}{ 
+				width: ((100% - @gutterSum)/@count);
+								
+				&:nth-child(1n){
+					margin-right: @gutter;
+				}
+				&:nth-child(1n+@{count}){
+					margin-right: 0;	
+				}
+			}
+		}
+		
+		.generateEqualWidthsGut((@count - 1), @gutter,@className);
+	}
+
+//generates reverse z indexes
+.reverseZIndex(@count){
+	
+	.generateReverseZIndex(@index, @initialCount) when(@index < @initialCount){
+		&:nth-child(@{index}){
+			z-index: (@initialCount - @index); 
+		} 
+		.generateReverseZIndex((@index + 1), @initialCount);
+	}
+	
+	.generateReverseZIndex(1, (@count + 1));
+}

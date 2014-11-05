@@ -8,7 +8,8 @@
     "mixins"
   ],
   "ignore" :[
-    ".gitignore"
+    ".gitignore",
+    "src"
   ],
   "repository": {
     "type": "git",

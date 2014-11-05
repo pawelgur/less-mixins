@@ -1,0 +1,64 @@
+
+.border-radius(...)
+{
+	border-radius: @arguments;  
+	-moz-border-radius: @arguments; /* Firefox 3.6 and earlier */
+	
+	& > img{
+		overflow: hidden; 
+		border-radius: @arguments;  
+		-moz-border-radius: @arguments; 
+	}
+} 
+
+.sizing-border-box()
+{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; 
+	-webkit-box-sizing:border-box; 
+}
+
+.box-shadow(...)
+{
+	-moz-box-shadow:    @arguments;
+	-webkit-box-shadow: @arguments;
+	box-shadow:         @arguments;
+}
+
+.box-shadow-multiple(@options)
+{
+	-moz-box-shadow:    @options;
+	-webkit-box-shadow: @options;
+	box-shadow:         @options;
+}
+
+.transition-general(...){
+	transition: 	@arguments ;
+	-moz-transition: @arguments ; 
+	-webkit-transition: @arguments; 
+	-o-transition: @arguments;
+	-ms-transition:  @arguments;
+}
+	.transition-general-prefixed(@type, @rest...){
+		-moz-transition:  	~"-moz-@{type}" 	@rest ; 
+		-webkit-transition: ~"-webkit-@{type}" @rest;  
+		-o-transition: 		~"-o-@{type}" 		@rest;
+		-ms-transition: 	~"-ms-@{type}" 	@rest;
+		transition: 		@type		@rest ;
+	}
+
+.transition-transform(...){ //cross-browser, specify only animation props
+	transition: 		transform @arguments ;
+	-moz-transition: 	-moz-transform @arguments ; 
+	-webkit-transition: -webkit-transform @arguments; 
+	-o-transition: 		-o-transform @arguments;
+	-ms-transition:  	-ms-transform @arguments;
+}
+
+
+.opacity(@opacity){
+	@ieOpacity: (@opacity * 100);
+	
+	opacity: @opacity;
+	filter:alpha(opacity=@ieOpacity);
+}

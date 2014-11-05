@@ -1,0 +1,63 @@
+
+///////////////// transformations ///////////////
+
+
+.transform-general(...){
+	transform: @arguments;
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-ms-transform: @arguments;
+	-o-transform: @arguments;
+}
+
+
+.transform-origin(@value){
+	//changes object origin for transforms (ex: "top left" to rotate by top left corner )
+	
+	-webkit-transform-origin: @value;
+    -moz-transform-origin: @value;
+    -o-transform-origin: @value;
+    -ms-transform-origin: @value;
+    transform-origin: @value;
+}
+
+.transform-style(@value: preserve-3d){
+	-webkit-transform-style: @value; /* Safari and Chrome */
+	transform-style: @value;
+}
+
+.perspective(@value){
+	-webkit-perspective: @value;
+	-moz-perspective: @value;
+	perspective: @value;
+}
+.backface-visibility(@value: hidden){
+	-webkit-backface-visibility: @value;
+	-moz-backface-visibility: @value;
+	backface-visibility: @value;
+}
+
+.rotate(@degrees){
+	transform:rotate(@degrees);
+	-ms-transform:rotate(@degrees); /* IE 9 */
+	-moz-transform:rotate(@degrees); /* Firefox */
+	-webkit-transform:rotate(@degrees); /* Safari and Chrome */
+	-o-transform:rotate(@degrees); /* Opera */
+	
+	
+}
+	//removes jagged edges 
+	.rotate(@degrees, true){
+		.rotate(@degrees); 
+		-webkit-backface-visibility: hidden; //removes jagged edges on chrome 
+	}
+
+.translate2d(@x, @y){
+	.transform-general(translate(@x, @y));
+}
+
+
+.translate3d(@x, @y, @z: 0){
+	//uses hardware acceleration
+	.transform-general(translate3d(@x, @y, @z));
+}

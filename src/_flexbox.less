@@ -1,0 +1,43 @@
+
+///////////////////// flexbox ////////////////////
+.display-flex(){
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	
+	display: -ms-flexbox;
+	-ms-box-orient: horizontal;
+
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+}
+
+.flex(@val){
+	-webkit-box-flex: @val;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: @val;         /* OLD - Firefox 19- */
+
+	-webkit-flex: @val;
+	-moz-flex: @val;
+	-ms-flex: @val;
+	flex: @val;
+}
+.flex-direction(@val){
+	-webkit-flex-direction: @val;
+	-moz-flex-direction: @val;
+	-ms-flex-direction: @val;
+	flex-direction: @val;
+} 
+
+.flex-shrink(@val){
+	-webkit-flex-shrink: @val; 
+	-moz-flex-shrink: @val; 
+	-ms-flex-shrink: @val;
+	flex-shrink: @val;
+}
+.justify-content(@val){
+    -webkit-justify-content: @val;
+    -moz-justify-content: @val;
+    -ms-justify-content: @val;
+    justify-content: @val;
+}
