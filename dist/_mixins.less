@@ -1,65 +1,24 @@
-//####################################################################
-//####################################################################
-//###################### MIXINS ####################################
-//####################################################################
-//#################################################################### 
+////////////////////////////////////////////
+//
+//  LESS MIXINS
+//
+//  Various less mixins.  https://github.com/pawelgur/less-mixins 
+//
+//  by Pavel Gurecki pawelgur@gmail.com
+//
+////////////////////////////////////////////
 
 
-.bullet-disc(@indent: 10px, @yOffset: 0px){
-	list-style-image:url('/img/bullet-round-lightblue.png');
-	list-style-type: disc;
-	
-	&:hover, &:active{
-		list-style-image:url('/img/bullet-round-blue.png');
-	
-	}
-}
-
-.bullet-arrow(@indent: 10px){
-	text-indent: @indent;    
-	background: url("/img/bullets.png") no-repeat 0 -20px;
-	
-	&:hover, &:active{
-		background-position: 0 5px;
-	}
-}  
- 
 
 
-/* reusable everywhere */
+////////////////////////////////////////////
+//
+//  Uncategorized mixins  
+//
+////////////////////////////////////////////
 
-.border-radius(...)
-{
-	border-radius: @arguments;  
-	-moz-border-radius: @arguments; /* Firefox 3.6 and earlier */
-	
-	& > img{
-		overflow: hidden; 
-		border-radius: @arguments;  
-		-moz-border-radius: @arguments; 
-	}
-} 
 
-.sizing-border-box()
-{
-	box-sizing:border-box;
-	-moz-box-sizing:border-box; 
-	-webkit-box-sizing:border-box; 
-}
-
-.box-shadow(...)
-{
-	-moz-box-shadow:    @arguments;
-	-webkit-box-shadow: @arguments;
-	box-shadow:         @arguments;
-}
-
-.box-shadow-multiple(@options)
-{
-	-moz-box-shadow:    @options;
-	-webkit-box-shadow: @options;
-	box-shadow:         @options;
-}
+//////// design elements
 
 .box-shadow-png(...)
 {
@@ -70,110 +29,6 @@
 	//ex args: 50px 50px 5px rgba(0, 0, 0, 0.5)	
 }
 
-.sprite-bg-post(@stepX, @stepY, @index, @initialX, @initialY){
-	background-position: (-@initialX - (@stepX * @index)) (-@initialY - (@stepY * @index));
-}
-
-
-
-.transparent-text(){
-	color: #000; /* Fallback for older browsers */
-	color: rgba(0, 0, 0, 0.0);
-	
-	.ie.oldie &{
-		text-indent: -9999px;
-	}
-}
-
-.background-color-transition(@speed, @effect){
-	-webkit-transition: background-color @speed @effect;
-    -moz-transition: background-color @speed @effect;
-    -o-transition: background-color @speed @effect;
-    -ms-transition: background-color @speed @effect;
-    transition: background-color @speed @effect;
-}
-
-.cube(@dimensions: 100%){
-	width: @dimensions;
-	height: @dimensions;
-}
-
- .clearfix(){
- // For modern browsers
-	&:before,
-	&:after {
-		content:" ";
-		display:table;
-	}
-
-	&:after {
-		clear:both;
-		content: " ";
-		visibility: hidden;
-		line-height: 0;
-		height: 0;
-	}
-
-  // For IE 6/7 (trigger hasLayout)
-  & {
-	*zoom:1;
-  }
-}
-
-
-
-.placeholderColor(@color)
-{
-	&::-webkit-input-placeholder { /* WebKit browsers */
-		color:    @color;
-	}
-	&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-		color:    @color;
-	}
-	&::-moz-placeholder { /* Mozilla Firefox 19+ */
-		color:    @color;
-	}
-	&:-ms-input-placeholder { /* Internet Explorer 10+ */
-		color:    @color;
-	}
-}
-
-.transition-general(...){
-	transition: 	@arguments ;
-	-moz-transition: @arguments ; 
-	-webkit-transition: @arguments; 
-	-o-transition: @arguments;
-	-ms-transition:  @arguments;
-}
-	.transition-general-prefixed(@type, @rest...){
-		-moz-transition:  	~"-moz-@{type}" 	@rest ; 
-		-webkit-transition: ~"-webkit-@{type}" @rest;  
-		-o-transition: 		~"-o-@{type}" 		@rest;
-		-ms-transition: 	~"-ms-@{type}" 	@rest;
-		transition: 		@type		@rest ;
-	}
-
-.transition-transform(...){ //cross-browser, specify only animation props
-	transition: 		transform @arguments ;
-	-moz-transition: 	-moz-transform @arguments ; 
-	-webkit-transition: -webkit-transform @arguments; 
-	-o-transition: 		-o-transform @arguments;
-	-ms-transition:  	-ms-transform @arguments;
-}
-
-.full-block()
-{
-	//used primary for inside - block links
-	width: 100%;
-	height: 100%;
-	display: block;
-	.sizing-border-box();
-}
-.fullBlock() {	.full-block;	} //left for backwards-compatibility
-
-.bg-col-trans(){
-	.transition-general(background-color 300ms);
-}
 
 .gradient-linear-bg(@startColor, @endColor)
 {
@@ -185,46 +40,6 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='@startColor', endColorstr='@endColor')"; /* IE8+ */  
 	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @endColor), color-stop(0.71, @startColor)	); /* Safari 4+, Chrome 2+ */
 	background-image: -ms-linear-gradient(bottom, @endColor, @startColor); /* IE10 */
-}
-
-
-.zipper-bottom(@color: "white"){
-	&:after{
-		content: " ";
-		width: 100%;
-		height: 5px;
-		display: block;
-		position: absolute;
-		bottom: 0;
-		background: url("/img/zipper-@{color}-up.png") repeat-x 0 0;  
-		z-index: 2;
-	}
-}
-.zipper-top(@color: "white"){
-	&:before{
-		content: " ";
-		width: 100%;
-		height: 5px;
-		display: block;
-		position: absolute;
-		top: 0;
-		background: url("/img/zipper-@{color}-down.png") repeat-x 0 0;  
-		z-index: 2;
-	}
-}
- 
- 
-.background-clip(padding-box){
-	-moz-background-clip: padding;     /* Firefox 3.6 */
-	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
-	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */				
-}
-
-.opacity(@opacity){
-	@ieOpacity: (@opacity * 100);
-	
-	opacity: @opacity;
-	filter:alpha(opacity=@ieOpacity);
 }
 
 
@@ -281,6 +96,101 @@
     }
 }
 
+
+//////// colors
+
+.placeholderColor(@color)
+{
+	&::-webkit-input-placeholder { /* WebKit browsers */
+		color:    @color;
+	}
+	&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		color:    @color;
+	}
+	&::-moz-placeholder { /* Mozilla Firefox 19+ */
+		color:    @color;
+	}
+	&:-ms-input-placeholder { /* Internet Explorer 10+ */
+		color:    @color;
+	}
+}
+
+
+.grayscale() {
+    
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' ><filter id=\'grayscale\' filterRes=\'183\' ><feColorMatrix type=\'matrix\'   values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+	-webkit-backface-visibility: hidden; /* Fix for transition flickering */
+}
+
+.grayscale-disable(){
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' ><filter id=\'grayscale\' filterRes=\'183\' ><feColorMatrix type=\'matrix\'  values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+    //filter: none; /* causes image moving in firefox */
+	-webkit-filter: grayscale(0%);
+}
+
+////////////////////////////////////////////
+//
+//  Deprecated
+//
+//  Not really usefull/project specific mixins.
+//
+//	WARNING: Do not use, will be removed in next version.
+//
+////////////////////////////////////////////
+
+.bullet-disc(@indent: 10px, @yOffset: 0px){
+	list-style-image:url('/img/bullet-round-lightblue.png');
+	list-style-type: disc;
+	
+	&:hover, &:active{
+		list-style-image:url('/img/bullet-round-blue.png');
+	
+	}
+}
+
+.bullet-arrow(@indent: 10px){
+	text-indent: @indent;    
+	background: url("/img/bullets.png") no-repeat 0 -20px;
+	
+	&:hover, &:active{
+		background-position: 0 5px;
+	}
+}  
+ 
+
+ .fullBlock() {	.full-block;	} //left for backwards-compatibility
+
+
+.zipper-bottom(@color: "white"){
+	&:after{
+		content: " ";
+		width: 100%;
+		height: 5px;
+		display: block;
+		position: absolute;
+		bottom: 0;
+		background: url("/img/zipper-@{color}-up.png") repeat-x 0 0;  
+		z-index: 2;
+	}
+}
+.zipper-top(@color: "white"){
+	&:before{
+		content: " ";
+		width: 100%;
+		height: 5px;
+		display: block;
+		position: absolute;
+		top: 0;
+		background: url("/img/zipper-@{color}-down.png") repeat-x 0 0;  
+		z-index: 2;
+	}
+}
+ 
+
+
+
 //////////////// HOVER OPAQUE ///////////////////////
 
 .hover-opaque-animation-def(@speed: 300ms, @opacity: 0.6 )
@@ -322,7 +232,119 @@
 
 
 
-//////////////////// LAYOUTS ////////////////////////////
+
+
+.background-color-transition(@speed, @effect){
+	-webkit-transition: background-color @speed @effect;
+    -moz-transition: background-color @speed @effect;
+    -o-transition: background-color @speed @effect;
+    -ms-transition: background-color @speed @effect;
+    transition: background-color @speed @effect;
+}
+
+
+.bg-col-trans(){
+	.transition-general(background-color 300ms);
+}
+
+
+ 
+.background-clip(padding-box){
+	-moz-background-clip: padding;     /* Firefox 3.6 */
+	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */				
+}
+
+
+.transparent-text(){
+	color: #000; /* Fallback for older browsers */
+	color: rgba(0, 0, 0, 0.0);
+	
+	.ie.oldie &{
+		text-indent: -9999px;
+	}
+}
+////////////////////////////////////////////
+//
+//  Flexbox
+//
+//  css3 flexbox related mixins
+//
+////////////////////////////////////////////
+
+///////////////////// flexbox ////////////////////
+.display-flex(){
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	
+	display: -ms-flexbox;
+	-ms-box-orient: horizontal;
+
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+}
+
+.flex(@val){
+	-webkit-box-flex: @val;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: @val;         /* OLD - Firefox 19- */
+
+	-webkit-flex: @val;
+	-moz-flex: @val;
+	-ms-flex: @val;
+	flex: @val;
+}
+.flex-direction(@val){
+	-webkit-flex-direction: @val;
+	-moz-flex-direction: @val;
+	-ms-flex-direction: @val;
+	flex-direction: @val;
+} 
+
+.flex-shrink(@val){
+	-webkit-flex-shrink: @val; 
+	-moz-flex-shrink: @val; 
+	-ms-flex-shrink: @val;
+	flex-shrink: @val;
+}
+.justify-content(@val){
+    -webkit-justify-content: @val;
+    -moz-justify-content: @val;
+    -ms-justify-content: @val;
+    justify-content: @val;
+}
+////////////////////////////////////////////
+//
+//  Layout Helpers
+//
+//  Helpers for css layouts
+//
+////////////////////////////////////////////
+
+.clearfix(){
+ // For modern browsers
+	&:before,
+	&:after {
+		content:" ";
+		display:table;
+	}
+
+	&:after {
+		clear:both;
+		content: " ";
+		visibility: hidden;
+		line-height: 0;
+		height: 0;
+	}
+
+  // For IE 6/7 (trigger hasLayout)
+  & {
+	*zoom:1;
+  }
+}
+
+
 
 //loop for generating equal widths (for ".count-[count]" classes)
 .generateEqualWidths(@count, @className: list-el) when (@count > 0){
@@ -367,127 +389,114 @@
 	.generateReverseZIndex(1, (@count + 1));
 }
 
+////////////////////////////////////////////
+//
+//  Prefixed
+//
+//  Prefixed versions of standard CSS3 properties
+//
+////////////////////////////////////////////
 
-///////////////// transformations ///////////////
-
-
-.transform-general(...){
-	transform: @arguments;
-	-webkit-transform: @arguments;
-	-moz-transform: @arguments;
-	-ms-transform: @arguments;
-	-o-transform: @arguments;
-}
-
-
-.transform-origin(@value){
-	//changes object origin for transforms (ex: "top left" to rotate by top left corner )
+.border-radius(...)
+{
+	border-radius: @arguments;  
+	-moz-border-radius: @arguments; /* Firefox 3.6 and earlier */
 	
-	-webkit-transform-origin: @value;
-    -moz-transform-origin: @value;
-    -o-transform-origin: @value;
-    -ms-transform-origin: @value;
-    transform-origin: @value;
-}
-
-.transform-style(@value: preserve-3d){
-	-webkit-transform-style: @value; /* Safari and Chrome */
-	transform-style: @value;
-}
-
-.perspective(@value){
-	-webkit-perspective: @value;
-	-moz-perspective: @value;
-	perspective: @value;
-}
-.backface-visibility(@value: hidden){
-	-webkit-backface-visibility: @value;
-	-moz-backface-visibility: @value;
-	backface-visibility: @value;
-}
-
-.rotate(@degrees){
-	transform:rotate(@degrees);
-	-ms-transform:rotate(@degrees); /* IE 9 */
-	-moz-transform:rotate(@degrees); /* Firefox */
-	-webkit-transform:rotate(@degrees); /* Safari and Chrome */
-	-o-transform:rotate(@degrees); /* Opera */
-	
-	
-}
-	//removes jagged edges 
-	.rotate(@degrees, true){
-		.rotate(@degrees); 
-		-webkit-backface-visibility: hidden; //removes jagged edges on chrome 
+	& > img{
+		overflow: hidden; 
+		border-radius: @arguments;  
+		-moz-border-radius: @arguments; 
 	}
-
-.translate2d(@x, @y){
-	.transform-general(translate(@x, @y));
-}
-
-
-.translate3d(@x, @y, @z: 0){
-	//uses hardware acceleration
-	.transform-general(translate3d(@x, @y, @z));
-}
-	
-//////////////// gray scale ///////////////////////
-.grayscale() {
-    
-	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' ><filter id=\'grayscale\' filterRes=\'183\' ><feColorMatrix type=\'matrix\'   values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
-    filter: gray; /* IE6-9 */
-    -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
-	-webkit-backface-visibility: hidden; /* Fix for transition flickering */
-}
-
-.grayscale-disable(){
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' ><filter id=\'grayscale\' filterRes=\'183\' ><feColorMatrix type=\'matrix\'  values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
-    //filter: none; /* causes image moving in firefox */
-	-webkit-filter: grayscale(0%);
-}
-
-///////////////////// flexbox ////////////////////
-.display-flex(){
-	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-	
-	display: -ms-flexbox;
-	-ms-box-orient: horizontal;
-
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: flex;
-}
-
-.flex(@val){
-	-webkit-box-flex: @val;      /* OLD - iOS 6-, Safari 3.1-6 */
-	-moz-box-flex: @val;         /* OLD - Firefox 19- */
-
-	-webkit-flex: @val;
-	-moz-flex: @val;
-	-ms-flex: @val;
-	flex: @val;
-}
-.flex-direction(@val){
-	-webkit-flex-direction: @val;
-	-moz-flex-direction: @val;
-	-ms-flex-direction: @val;
-	flex-direction: @val;
 } 
 
-.flex-shrink(@val){
-	-webkit-flex-shrink: @val; 
-	-moz-flex-shrink: @val; 
-	-ms-flex-shrink: @val;
-	flex-shrink: @val;
+.sizing-border-box()
+{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; 
+	-webkit-box-sizing:border-box; 
 }
-.justify-content(@val){
-    -webkit-justify-content: @val;
-    -moz-justify-content: @val;
-    -ms-justify-content: @val;
-    justify-content: @val;
+
+.box-shadow(...)
+{
+	-moz-box-shadow:    @arguments;
+	-webkit-box-shadow: @arguments;
+	box-shadow:         @arguments;
 }
+
+.box-shadow-multiple(@options)
+{
+	-moz-box-shadow:    @options;
+	-webkit-box-shadow: @options;
+	box-shadow:         @options;
+}
+
+.transition-general(...){
+	transition: 	@arguments ;
+	-moz-transition: @arguments ; 
+	-webkit-transition: @arguments; 
+	-o-transition: @arguments;
+	-ms-transition:  @arguments;
+}
+	.transition-general-prefixed(@type, @rest...){
+		-moz-transition:  	~"-moz-@{type}" 	@rest ; 
+		-webkit-transition: ~"-webkit-@{type}" @rest;  
+		-o-transition: 		~"-o-@{type}" 		@rest;
+		-ms-transition: 	~"-ms-@{type}" 	@rest;
+		transition: 		@type		@rest ;
+	}
+
+.transition-transform(...){ //cross-browser, specify only animation props
+	transition: 		transform @arguments ;
+	-moz-transition: 	-moz-transform @arguments ; 
+	-webkit-transition: -webkit-transform @arguments; 
+	-o-transition: 		-o-transform @arguments;
+	-ms-transition:  	-ms-transform @arguments;
+}
+
+
+.opacity(@opacity){
+	@ieOpacity: (@opacity * 100);
+	
+	opacity: @opacity;
+	filter:alpha(opacity=@ieOpacity);
+}
+////////////////////////////////////////////
+//
+//  Quick Typers
+//
+//  Mixins for quick typing repeating css styles.
+//
+////////////////////////////////////////////
+
+.cube(@dimensions: 100%){
+	width: @dimensions;
+	height: @dimensions;
+}
+
+
+
+.full-block()
+{
+	//used primary for inside - block links
+	width: 100%;
+	height: 100%;
+	display: block;
+	.sizing-border-box();
+}
+
+
+
+.sprite-bg-post(@stepX, @stepY, @index, @initialX, @initialY){
+	background-position: (-@initialX - (@stepX * @index)) (-@initialY - (@stepY * @index));
+}
+
+////////////////////////////////////////////
+//
+//  Shapes
+//
+//  various shapes by pure css
+//
+////////////////////////////////////////////
 
 //////////////// css shapes ///////////////////
 .triangle-bottom-right(@color, @dimensions){
@@ -694,3 +703,71 @@
    @color 60px 60px;
 }
 
+
+////////////////////////////////////////////
+//
+//  Transformations
+//
+//  mixins for working with CSS3 transforms
+//
+////////////////////////////////////////////
+
+.transform-general(...){
+	transform: @arguments;
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-ms-transform: @arguments;
+	-o-transform: @arguments;
+}
+
+
+.transform-origin(@value){
+	//changes object origin for transforms (ex: "top left" to rotate by top left corner )
+	
+	-webkit-transform-origin: @value;
+    -moz-transform-origin: @value;
+    -o-transform-origin: @value;
+    -ms-transform-origin: @value;
+    transform-origin: @value;
+}
+
+.transform-style(@value: preserve-3d){
+	-webkit-transform-style: @value; /* Safari and Chrome */
+	transform-style: @value;
+}
+
+.perspective(@value){
+	-webkit-perspective: @value;
+	-moz-perspective: @value;
+	perspective: @value;
+}
+.backface-visibility(@value: hidden){
+	-webkit-backface-visibility: @value;
+	-moz-backface-visibility: @value;
+	backface-visibility: @value;
+}
+
+.rotate(@degrees){
+	transform:rotate(@degrees);
+	-ms-transform:rotate(@degrees); /* IE 9 */
+	-moz-transform:rotate(@degrees); /* Firefox */
+	-webkit-transform:rotate(@degrees); /* Safari and Chrome */
+	-o-transform:rotate(@degrees); /* Opera */
+	
+	
+}
+	//removes jagged edges 
+	.rotate(@degrees, true){
+		.rotate(@degrees); 
+		-webkit-backface-visibility: hidden; //removes jagged edges on chrome 
+	}
+
+.translate2d(@x, @y){
+	.transform-general(translate(@x, @y));
+}
+
+
+.translate3d(@x, @y, @z: 0){
+	//uses hardware acceleration
+	.transform-general(translate3d(@x, @y, @z));
+}
