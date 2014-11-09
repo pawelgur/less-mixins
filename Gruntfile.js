@@ -3,9 +3,8 @@ module.exports = function(grunt){
 		pkg: grunt.file.readJSON('package.json'),
 		concat :{
 			mixins : {
-				files : {
-					'dist/_mixins.less' : 'src/*.less'
-				}
+				src : ['src/_custom.less', 'src/*.less'],
+				dest : 'dist/_mixins.less'				
 			}
 		},
 		watch : {
