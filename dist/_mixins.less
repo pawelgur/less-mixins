@@ -496,6 +496,58 @@
 	background-position: (-@initialX - (@stepX * @index)) (-@initialY - (@stepY * @index));
 }
 
+
+//////// pseudo elements helpers
+
+
+.pseudo-block(){
+    content: " ";
+    display: block;
+}
+
+.pseudo-abs(){
+    //helper for absolute positioned pseudo elements
+    position: absolute;
+    
+    .pseudo-block;
+}
+
+
+//////// absolute positioning helpers
+
+
+.center-abs(@width){
+    //horizontally center element with absolute positioning
+    width: @width;
+    position: absolute;
+    left: 50%;
+    margin-left: -(@width/2);
+}
+
+.center-abs-bottom(@y){
+	//position element from vertical center
+    position: absolute;
+    bottom: 50%;
+    margin-bottom: @y;
+}
+.center-abs-top(@y){
+	//position element from vertical center
+    position: absolute;
+    top: 50%;
+    margin-top: @y;
+}
+.center-abs-right(@x){
+	//position element from horizontal center
+    position: absolute;
+    left: 50%;
+    margin-left: @x;
+}
+.center-abs-left(@x){
+	//position element from horizontal center
+    position: absolute;
+    right: 50%;
+    margin-right: @x;
+}
 ////////////////////////////////////////////
 //
 //  Shapes
