@@ -1,0 +1,81 @@
+////////////////////////////////////////////
+//
+//  CSS3 ANIMATIONS
+//
+//	Mainly prefixed versions of animation properties
+//
+////////////////////////////////////////////
+
+ .animation(...){
+	
+	// animation-name
+	// animation-duration 
+	// animation-timing-function: 	inear|ease|ease-in|ease-out|cubic-bezier(n,n,n,n)
+	// animation-delay
+	// animation-iteration-count
+	// animation-direction:			normal|reverse|alternate|alternate-reverse	//specifies whether or not the animation should play in reverse on alternate cycles
+	// [fill-mode]:					none|forwards|backwards|both 	//specifies which styles are applied after animation end
+	// [play-state]:				paused|running
+	
+	-webkit-animation: @arguments; 
+	-moz-animation: @arguments; 
+	-o-animation: @arguments; 
+	animation: @arguments;
+}
+
+.animation-delay(@delay){
+	-webkit-animation-delay: @delay; 
+	-moz-animation-delay: @delay; 
+	-o-animation-delay: @delay; 
+	animation-delay: @delay;
+	
+} 
+
+.animation-duration(@value){
+	-webkit-animation-duration: @value; 
+	-moz-animation-duration: @value; 
+	-o-animation-duration: @value; 
+	animation-duration: @value;
+}
+
+.animation-iteration-count(@value){
+    -webkit-animation-iteration-count: @value;
+    animation-iteration-count: @value;
+}
+
+.animation-timing-function(@value){
+    -webkit-animation-timing-function: @value;
+    animation-timing-function: @value;
+}
+
+//////// helpers
+
+//generates animation delay for child elements
+.generate-delay(@starting: 0s, @delay: 0.5s, @count: 5) when (@count >= 0){
+	@childNr: (@count + 1);
+	@currentDelay: (@starting + @delay * @count);
+	
+	&:nth-child(@{childNr}){
+		.animation-delay(@currentDelay);
+	}
+	
+	.generate-delay(@starting, @delay, (@count - 1));
+}
+
+////////////// ANIMATION MIXIN TEMPLATE///////////
+//
+//TODO: use animation name as variable when winless updates less to 1.7 (supporting variables with @keyframes)
+//
+
+.template-frames(){
+	0%{ 
+		opacity: 0;
+	}
+}
+
+@-o-keyframes template { .template-frames; }
+@-webkit-keyframes template { .template-frames; }
+@-moz-keyframes template { .template-frames; }
+@keyframes template {.template-frames; } 
+
+// ANIMATION MIXIN TEMPLATE END
